@@ -9,6 +9,13 @@ void viewing_ray(
   Ray & ray)
 {
   ////////////////////////////////////////////////////////////////////////////
-  // Add your code here:
+  ray.origin = camera.e;
+  //   i  pixel row index   -> y
+  //   j  pixel column index -> x
+  double x = -(camera.width * 0.5) + (camera.width * (j + 0.5) / width);
+  double y = (camera.height * 0.5) - (camera.height * (i + 0.5) / height);
+
+  ray.direction = (x * camera.u + y * camera.v - camera.d * camera.w).normalized();
   ////////////////////////////////////////////////////////////////////////////
 }
+
